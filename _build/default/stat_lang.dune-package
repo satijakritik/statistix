@@ -1,4 +1,4 @@
 (lang dune 3.10)
 (name stat_lang)
-(sections (lib .) (bin ../../bin))
-(files (lib (META dune-package opam)) (bin (stat_lang)))
+(sections (lib .) (bin ../../bin) (doc ../../doc/stat_lang))
+(files (lib (META dune-package opam)) (bin (stat_lang)) (doc (README.md)))

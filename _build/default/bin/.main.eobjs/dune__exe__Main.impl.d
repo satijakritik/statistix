@@ -1,1 +1,1 @@
-bin/main.ml:
+bin/main.ml: Ast Lexer Lexing Parser

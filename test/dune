@@ -1,2 +1,2 @@
 (test
- (name stat_lang))
+ (name test))

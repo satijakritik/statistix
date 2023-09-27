@@ -6,3 +6,6 @@ lib: [
 bin: [
   "_build/install/default/bin/stat_lang"
 ]
+doc: [
+  "_build/install/default/doc/stat_lang/README.md"
+]

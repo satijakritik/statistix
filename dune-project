@@ -1,11 +1,12 @@
 (lang dune 3.10)
+(using menhir 2.1)
 
 (name stat_lang)
 
 (generate_opam_files true)
 
 (source
- (github username/reponame))
+ (github satijakritik/stat_lang))
 
 (authors "Kritik Satija")
 
@@ -19,7 +20,7 @@
  (name stat_lang)
  (synopsis "A short synopsis")
  (description "A longer description")
- (depends ocaml dune)
+ (depends ocaml dune (alcotest :with-test))
  (tags
   (topics "to describe" your project)))
 
