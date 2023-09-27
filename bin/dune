@@ -1,0 +1,4 @@
+(executable
+ (public_name stat_lang)
+ (name main)
+ (libraries stat_lang))
