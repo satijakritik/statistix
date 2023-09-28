@@ -1,4 +1,16 @@
-type token = PLUS | INT of int | EOF
+type token =
+    STRING of string
+  | RBRACKET
+  | PRODUCT
+  | PLUS
+  | OR
+  | LBRACKET
+  | INT of int
+  | FLOAT of float
+  | EOF
+  | DIVIDE
+  | BOOL of bool
+  | AND
 val menhir_begin_marker : int
 val xv_prog : Ast.expr
 val xv_expr : Ast.expr
