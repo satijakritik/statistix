@@ -3,15 +3,18 @@
 
 type token = 
   | STRING of (string)
-  | RBRACKET
+  | RPAREN
   | PRODUCT
   | PLUS
   | OR
-  | LBRACKET
+  | MOD
+  | MINUS
+  | LPAREN
   | INT of (int)
   | FLOAT of (float)
   | EOF
   | DIVIDE
+  | CHAR of (char)
   | BOOL of (bool)
   | AND
 

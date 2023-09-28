@@ -2,7 +2,8 @@ type binop =
   | Add
   | Mul
   | Div
-  (* | Sub *)
+  | Mod
+  | Sub
   | And
   | Or
 
@@ -11,4 +12,5 @@ type expr =
   | Float of float
   | Bool of bool
   | String of string
+  | Char of char
   | Binop of binop * expr * expr
