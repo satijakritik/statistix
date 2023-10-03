@@ -5,26 +5,22 @@
 %token <int> INT
 %token <float> FLOAT
 %token <bool> BOOL
-%token <string> STRING
-%token <char> CHAR
-%token LPAREN
-%token RPAREN
-%token PLUS
-%token MINUS
-%token PRODUCT
-%token DIVIDE
-%token MOD
-%token AND
-%token OR
+%token <string> VAR
+
+%token LPAREN RPAREN
+%token PLUS MINUS PRODUCT DIVIDE MOD
+%token LEQUALS GEQUALS EQUALS NEQUALS
+%token LET ASSIGN IN
+%token IF THEN ELSE
+%token WHILE DO
+%token AND OR NOT
+
 %token EOF
 
-%left MINUS
-%left PLUS
-%left PRODUCT
-%left MOD
-%left DIVIDE
-%left AND
-%left OR
+%left LEQUALS GEQUALS EQUALS NEQUALS
+%left MINUS PLUS PRODUCT MOD DIVIDE
+%left AND OR NOT
+%nonassoc UMINUS
 
 %start prog
 %type <Ast.expr> prog
@@ -32,22 +28,34 @@
 %%
 
 prog:
-    | e = expr; EOF { e }
+    | expr EOF { $1 }
     ;
 
 expr:
-    | i = INT { Int i }
-    | i = BOOL { Bool i }
-    | i = STRING { String i }
-    | i = FLOAT { Float i }
-    | i = CHAR { Char i }
-    | e1 = expr; PLUS; e2 = expr { Binop (Add, e1, e2) }
-    | e1 = expr; MINUS; e2 = expr { Binop (Sub, e1, e2) }
-    | e1 = expr; PRODUCT; e2 = expr { Binop (Mul, e1, e2) }
-    | e1 = expr; DIVIDE; e2 = expr { Binop (Div, e1, e2) }
-    | e1 = expr; MOD; e2 = expr { Binop (Mod, e1, e2) }
-    | e1 = expr; AND; e2 = expr { Binop (And, e1, e2) }
-    | e1 = expr; OR; e2 = expr { Binop (Or, e1, e2) }
-    | LPAREN; e = expr; RPAREN { e }
-    ;
+    | n = INT { Int n }
+    | n = BOOL { Bool n }
+    | n = VAR { Var n }
+    | n = FLOAT { Float n }
+    | MINUS expr %prec UMINUS { Unaryop (Neg, $2) }
 
+    | expr PLUS expr { Binop (Add, $1, $3) }
+    | expr MINUS expr { Binop (Sub, $1, $3) }
+    | expr PRODUCT expr { Binop (Mul, $1, $3) }
+    | expr DIVIDE expr { Binop (Div, $1, $3) }
+    | expr MOD expr { Binop (Mod, $1, $3) }
+
+    | expr LEQUALS expr { Binop (Leq, $1, $3) }
+    | expr GEQUALS expr { Binop (Geq, $1, $3) }
+    | expr EQUALS expr { Binop (Eq, $1, $3) }
+    | expr NEQUALS expr { Binop (Neq, $1, $3) }
+    
+    | expr AND expr { Binop (And, $1, $3) }
+    | expr OR expr { Binop (Or, $1, $3) }
+    | NOT expr { Unaryop (Not, $2) }
+
+    | LPAREN expr RPAREN { $2 }
+    | LET VAR ASSIGN expr IN expr { Let ($2, $4, $6) } 
+    | IF expr THEN expr ELSE expr { If ($2, $4, $6) }
+    | WHILE expr DO expr { While ($2, $4) }
+    
+    ;

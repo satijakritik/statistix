@@ -1,2 +1,6 @@
 (library
- (name stat_lang))
+ (name stat_lang)
+ (libraries fmt)
+ (inline_tests)
+ (preprocess (pps ppx_jane))
+ )

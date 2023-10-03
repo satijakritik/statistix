@@ -20,7 +20,7 @@
  (name stat_lang)
  (synopsis "A short synopsis")
  (description "A longer description")
- (depends ocaml dune (alcotest :with-test))
+ (depends ocaml dune fmt ppx_jane)
  (tags
   (topics "to describe" your project)))
 

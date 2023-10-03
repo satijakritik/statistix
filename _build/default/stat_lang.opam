@@ -12,7 +12,8 @@ bug-reports: "https://github.com/satijakritik/stat_lang/issues"
 depends: [
   "ocaml"
   "dune" {>= "3.10"}
-  "alcotest" {with-test}
+  "fmt"
+  "ppx_jane"
   "odoc" {with-doc}
 ]
 build: [

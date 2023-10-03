@@ -1,2 +1,10 @@
-(test
- (name test))
+(library
+ (name test)
+ (inline_tests)
+ (preprocess
+  (pps ppx_jane))
+ )
+; ((executable
+;  (name test)
+;  (public_name test)
+;  (libraries bin)))

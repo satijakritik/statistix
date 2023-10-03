@@ -2,20 +2,32 @@
 (* The type of tokens. *)
 
 type token = 
-  | STRING of (string)
+  | WHILE
+  | VAR of (string)
+  | THEN
   | RPAREN
   | PRODUCT
   | PLUS
   | OR
+  | NOT
+  | NEQUALS
   | MOD
   | MINUS
   | LPAREN
+  | LET
+  | LEQUALS
   | INT of (int)
+  | IN
+  | IF
+  | GEQUALS
   | FLOAT of (float)
+  | EQUALS
   | EOF
+  | ELSE
+  | DO
   | DIVIDE
-  | CHAR of (char)
   | BOOL of (bool)
+  | ASSIGN
   | AND
 
 (* This exception is raised by the monolithic API functions. *)
