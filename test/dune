@@ -3,8 +3,11 @@
  (inline_tests)
  (preprocess
   (pps ppx_jane))
+  (libraries interpreter)
  )
-; ((executable
+
+; (executable
 ;  (name test)
 ;  (public_name test)
-;  (libraries bin)))
+;  (libraries interpreter))
+

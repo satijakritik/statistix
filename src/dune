@@ -1,0 +1,25 @@
+(menhir
+ (modules parser))
+
+(ocamllex lexer)
+
+(executable
+ (public_name stat_lang)
+ (name main)
+ (libraries stat_lang)
+ (modules main)
+ )
+
+; (module src)
+
+(library
+ (name interpreter)
+ (public_name stat_lang)
+ ; (inline_tests)
+ (modules parser lexer ast interpreter))
+
+
+; ((library
+;  (name stat_lang)
+;  (public_name stat_lang)
+;  (libraries stat_lang)))
