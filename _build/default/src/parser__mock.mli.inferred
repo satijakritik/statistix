@@ -2,8 +2,11 @@ type token =
     WHILE
   | VAR of string
   | THEN
+  | SUCC
   | RPAREN
+  | RBRACKET
   | PRODUCT
+  | PRED
   | PLUS
   | OR
   | NOT
@@ -13,6 +16,7 @@ type token =
   | LPAREN
   | LET
   | LEQUALS
+  | LBRACKET
   | INT of int
   | IN
   | IF
@@ -23,10 +27,12 @@ type token =
   | ELSE
   | DO
   | DIVIDE
+  | COMMA
   | BOOL of bool
   | ASSIGN
   | AND
 val menhir_begin_marker : int
 val xv_prog : Ast.expr
+val xv_list_contents : Ast.expr list
 val xv_expr : Ast.expr
 val menhir_end_marker : int

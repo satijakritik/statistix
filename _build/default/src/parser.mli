@@ -5,8 +5,11 @@ type token =
   | WHILE
   | VAR of (string)
   | THEN
+  | SUCC
   | RPAREN
+  | RBRACKET
   | PRODUCT
+  | PRED
   | PLUS
   | OR
   | NOT
@@ -16,6 +19,7 @@ type token =
   | LPAREN
   | LET
   | LEQUALS
+  | LBRACKET
   | INT of (int)
   | IN
   | IF
@@ -26,6 +30,7 @@ type token =
   | ELSE
   | DO
   | DIVIDE
+  | COMMA
   | BOOL of (bool)
   | ASSIGN
   | AND

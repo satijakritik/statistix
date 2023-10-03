@@ -1,4 +1,4 @@
-type unaryop = Neg | Not
+type unaryop = Neg | Not | Succ | Pred
 type binop = Add | Mul | Div | Mod | Sub | Leq | Geq | Eq | Neq | And | Or
 
 type expr =
@@ -13,3 +13,4 @@ type expr =
   | Let of string * expr * expr
   | If of expr * expr * expr
   | While of expr * expr
+  | List of expr list

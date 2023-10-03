@@ -14,9 +14,16 @@
 %token IF THEN ELSE
 %token WHILE DO
 %token AND OR NOT
+%token SUCC PRED
+
+%token LBRACKET
+%token RBRACKET
+// %token SEMICOLON
+%token COMMA
 
 %token EOF
 
+%left SUCC PRED
 %left LEQUALS GEQUALS EQUALS NEQUALS
 %left MINUS PLUS PRODUCT MOD DIVIDE
 %left AND OR NOT
@@ -37,6 +44,8 @@ expr:
     | n = VAR { Var n }
     | n = FLOAT { Float n }
     | MINUS expr %prec UMINUS { Unaryop (Neg, $2) }
+    | SUCC expr { Unaryop (Succ, $2) }
+    | PRED expr { Unaryop (Pred, $2) }
 
     | expr PLUS expr { Binop (Add, $1, $3) }
     | expr MINUS expr { Binop (Sub, $1, $3) }
@@ -57,5 +66,11 @@ expr:
     | LET VAR ASSIGN expr IN expr { Let ($2, $4, $6) } 
     | IF expr THEN expr ELSE expr { If ($2, $4, $6) }
     | WHILE expr DO expr { While ($2, $4) }
-    
+    | LBRACKET list_contents RBRACKET { List $2 }
+    ;
+
+list_contents:
+    | { [] }
+    | expr { [$1] }
+    | list_contents COMMA expr { $3 :: $1 }
     ;

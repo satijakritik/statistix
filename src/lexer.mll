@@ -18,29 +18,19 @@ rule read =
     | bool { BOOL ( bool_of_string (Lexing.lexeme lexbuf)) }
     | whitespace { read lexbuf }
 
-    | "(" { LPAREN }
-    | ")" { RPAREN }
-    | "+" { PLUS }
-    | "*" { PRODUCT }
-    | "/" { DIVIDE }
-    | "%" { MOD }
-    | "&&" { AND }
-    | "||" { OR }
-    | "~" { NOT }
-    | "-" { MINUS }
-    | "<=" { LEQUALS }
-    | ">=" { GEQUALS }
-    | "==" { EQUALS }
-    | "!=" { NEQUALS }
+    | "succ" { SUCC } | "pred" { PRED }
+    | "(" { LPAREN } | ")" { RPAREN }
+    | "+" { PLUS } | "*" { PRODUCT } | "/" { DIVIDE } | "%" { MOD } | "-" { MINUS }
+    | "&&" { AND } | "||" { OR } | "~" { NOT }
+    
+    | "<=" { LEQUALS } | ">=" { GEQUALS } | "==" { EQUALS } | "!=" { NEQUALS }
 
-    | "if" { IF }
-    | "then" { THEN }
-    | "else" { ELSE }
-    | "let" { LET }
-    | "in" { IN }  
-    | "=" { ASSIGN }
+    | "if" { IF } | "then" { THEN } | "else" { ELSE }
+    | "let" { LET } | "in" { IN } | "=" { ASSIGN }
+    | "while" { WHILE } | "do" { DO }
+    | "[" { LBRACKET }| "]" { RBRACKET }
+    (* | ";" { SEMICOLON } *)
+    | "," { COMMA }
     | var { VAR (Lexing.lexeme lexbuf) }
-    | "while" { WHILE }
-    | "do" { DO }
     
     | eof { EOF }
