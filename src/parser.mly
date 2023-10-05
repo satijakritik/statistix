@@ -1,5 +1,5 @@
 %{
-    open Ast
+  open Ast
 %}
 
 %token <int> INT
@@ -12,65 +12,54 @@
 %token LEQUALS GEQUALS EQUALS NEQUALS
 %token LET ASSIGN IN
 %token IF THEN ELSE
-%token WHILE DO
 %token AND OR NOT
-%token SUCC PRED
-
-%token LBRACKET
-%token RBRACKET
-// %token SEMICOLON
-%token COMMA
-
 %token EOF
 
-%left SUCC PRED
+%token SEMICOLON
+
+%token WHILE DO DONE
+
 %left LEQUALS GEQUALS EQUALS NEQUALS
-%left MINUS PLUS PRODUCT MOD DIVIDE
+%left MINUS PLUS
+%left PRODUCT MOD DIVIDE
 %left AND OR NOT
 %nonassoc UMINUS
 
 %start prog
-%type <Ast.expr> prog
+%type <expr list> prog
 
 %%
 
 prog:
-    | expr EOF { $1 }
-    ;
+  | expr_list EOF { $1 }
+  | EOF { [] }
+  ;
+
+expr_list:
+  | expr SEMICOLON { [$1] }
+  | expr SEMICOLON expr_list { $1 :: $3 }
+  ;
 
 expr:
-    | n = INT { Int n }
-    | n = BOOL { Bool n }
-    | n = VAR { Var n }
-    | n = FLOAT { Float n }
-    | MINUS expr %prec UMINUS { Unaryop (Neg, $2) }
-    | SUCC expr { Unaryop (Succ, $2) }
-    | PRED expr { Unaryop (Pred, $2) }
+  | n = INT { Int n }
+  | n = BOOL { Bool n }
+  | n = VAR { Var n }
+  | n = FLOAT { Float n }
+  | IF expr THEN expr ELSE expr { If ($2, $4, $6) }
+  | MINUS expr %prec UMINUS { Unaryop (Neg, $2) }
+  | expr PLUS expr { Binop (Add, $1, $3) }
+  | expr MINUS expr { Binop (Sub, $1, $3) }
+  | expr PRODUCT expr { Binop (Mul, $1, $3) }
+  | expr DIVIDE expr { Binop (Div, $1, $3) }
+  | expr MOD expr { Binop (Mod, $1, $3) }
+  | expr LEQUALS expr { Binop (Leq, $1, $3) }
+  | expr GEQUALS expr { Binop (Geq, $1, $3) }
+  | expr EQUALS expr { Binop (Eq, $1, $3) }
+  | expr NEQUALS expr { Binop (Neq, $1, $3) }
+  | expr AND expr { Binop (And, $1, $3) }
+  | expr OR expr { Binop (Or, $1, $3) }
+  | NOT expr { Unaryop (Not, $2) }
+  | LPAREN expr RPAREN { $2 }
+  | WHILE expr DO expr DONE { While ($2, $4) }
+  | LET VAR ASSIGN expr IN expr { Let ($2, $4, $6) }
 
-    | expr PLUS expr { Binop (Add, $1, $3) }
-    | expr MINUS expr { Binop (Sub, $1, $3) }
-    | expr PRODUCT expr { Binop (Mul, $1, $3) }
-    | expr DIVIDE expr { Binop (Div, $1, $3) }
-    | expr MOD expr { Binop (Mod, $1, $3) }
-
-    | expr LEQUALS expr { Binop (Leq, $1, $3) }
-    | expr GEQUALS expr { Binop (Geq, $1, $3) }
-    | expr EQUALS expr { Binop (Eq, $1, $3) }
-    | expr NEQUALS expr { Binop (Neq, $1, $3) }
-    
-    | expr AND expr { Binop (And, $1, $3) }
-    | expr OR expr { Binop (Or, $1, $3) }
-    | NOT expr { Unaryop (Not, $2) }
-
-    | LPAREN expr RPAREN { $2 }
-    | LET VAR ASSIGN expr IN expr { Let ($2, $4, $6) } 
-    | IF expr THEN expr ELSE expr { If ($2, $4, $6) }
-    | WHILE expr DO expr { While ($2, $4) }
-    | LBRACKET list_contents RBRACKET { List $2 }
-    ;
-
-list_contents:
-    | { [] }
-    | expr { [$1] }
-    | list_contents COMMA expr { $3 :: $1 }
-    ;

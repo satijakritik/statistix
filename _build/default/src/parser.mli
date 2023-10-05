@@ -5,11 +5,9 @@ type token =
   | WHILE
   | VAR of (string)
   | THEN
-  | SUCC
+  | SEMICOLON
   | RPAREN
-  | RBRACKET
   | PRODUCT
-  | PRED
   | PLUS
   | OR
   | NOT
@@ -19,7 +17,6 @@ type token =
   | LPAREN
   | LET
   | LEQUALS
-  | LBRACKET
   | INT of (int)
   | IN
   | IF
@@ -28,9 +25,9 @@ type token =
   | EQUALS
   | EOF
   | ELSE
+  | DONE
   | DO
   | DIVIDE
-  | COMMA
   | BOOL of (bool)
   | ASSIGN
   | AND
@@ -41,4 +38,4 @@ exception Error
 
 (* The monolithic API. *)
 
-val prog: (Lexing.lexbuf -> token) -> Lexing.lexbuf -> (Ast.expr)
+val prog: (Lexing.lexbuf -> token) -> Lexing.lexbuf -> (Ast.expr list)

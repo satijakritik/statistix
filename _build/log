@@ -1,9 +1,9 @@
-# dune runtest
+# dune exec -- stat_lang '1+1;'
 # OCAMLPARAM: unset
 # Shared cache: disabled
 # Workspace root: "/Users/kritiksatija/Desktop/OCaml learning/stat_lang"
 # Auto-detected concurrency: 8
-$ /Users/kritiksatija/.opam/default/bin/ocamlc.opt -config > /var/folders/wk/1y63g54j6qb181j_ytl0b8ww0000gn/T/dune_080d74_output
+$ /Users/kritiksatija/.opam/default/bin/ocamlc.opt -config > /var/folders/wk/1y63g54j6qb181j_ytl0b8ww0000gn/T/dune_ad6078_output
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
@@ -120,4 +120,3 @@ $ /Users/kritiksatija/.opam/default/bin/ocamlc.opt -config > /var/folders/wk/1y6
 #      ; windows_unicode = false
 #      }
 #  }
-$ (cd _build/.sandbox/5683a086dbc4888ad6bb47a36ecf56ee/default && /Users/kritiksatija/.opam/default/bin/menhir src/parser.mly --base src/parser --infer-write-query src/parser__mock.ml.mock)

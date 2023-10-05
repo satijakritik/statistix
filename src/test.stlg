@@ -1,0 +1,8 @@
+let x = 10 in
+
+//while !x <= 0 do
+//x := !x - 1
+//done;
+
+let y = 30 in
+x * y;
