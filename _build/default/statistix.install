@@ -1,0 +1,39 @@
+lib: [
+  "_build/install/default/lib/statistix/META"
+  "_build/install/default/lib/statistix/ast.ml"
+  "_build/install/default/lib/statistix/dune-package"
+  "_build/install/default/lib/statistix/interpreter.a"
+  "_build/install/default/lib/statistix/interpreter.cma"
+  "_build/install/default/lib/statistix/interpreter.cmi"
+  "_build/install/default/lib/statistix/interpreter.cmt"
+  "_build/install/default/lib/statistix/interpreter.cmx"
+  "_build/install/default/lib/statistix/interpreter.cmxa"
+  "_build/install/default/lib/statistix/interpreter.ml"
+  "_build/install/default/lib/statistix/interpreter__.cmi"
+  "_build/install/default/lib/statistix/interpreter__.cmt"
+  "_build/install/default/lib/statistix/interpreter__.cmx"
+  "_build/install/default/lib/statistix/interpreter__.ml"
+  "_build/install/default/lib/statistix/interpreter__Ast.cmi"
+  "_build/install/default/lib/statistix/interpreter__Ast.cmt"
+  "_build/install/default/lib/statistix/interpreter__Ast.cmx"
+  "_build/install/default/lib/statistix/interpreter__Lexer.cmi"
+  "_build/install/default/lib/statistix/interpreter__Lexer.cmt"
+  "_build/install/default/lib/statistix/interpreter__Lexer.cmx"
+  "_build/install/default/lib/statistix/interpreter__Parser.cmi"
+  "_build/install/default/lib/statistix/interpreter__Parser.cmt"
+  "_build/install/default/lib/statistix/interpreter__Parser.cmti"
+  "_build/install/default/lib/statistix/interpreter__Parser.cmx"
+  "_build/install/default/lib/statistix/lexer.ml"
+  "_build/install/default/lib/statistix/opam"
+  "_build/install/default/lib/statistix/parser.ml"
+  "_build/install/default/lib/statistix/parser.mli"
+]
+libexec: [
+  "_build/install/default/lib/statistix/interpreter.cmxs"
+]
+bin: [
+  "_build/install/default/bin/statistix"
+]
+doc: [
+  "_build/install/default/doc/statistix/README.md"
+]

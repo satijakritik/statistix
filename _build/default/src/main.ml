@@ -9,7 +9,6 @@ let rec loop env =
 
 let () =
   let initial_env = Env.empty in
-  (* loop initial_env *)
   match Array.length Sys.argv with
   | 1 ->  (* No command-line arguments, enter interactive mode *)
     print_endline "Interactive mode:";

@@ -13,7 +13,4 @@ type expr =
    | Let of string * expr * expr
    | If of expr * expr * expr
    | While of expr * expr
-   (* | Func of string option * string list * expr
-   | RecFunc of string * string list * expr
-   | Call of expr * expr list *)
   

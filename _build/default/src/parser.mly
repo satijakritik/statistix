@@ -18,7 +18,6 @@
 %token SEMICOLON
 
 %token WHILE DO DONE
-// %token FUNCTION REC ARROW COMMA
 
 %left LEQUALS GEQUALS EQUALS NEQUALS
 %left MINUS PLUS
@@ -63,12 +62,4 @@ expr:
   | LPAREN expr RPAREN { $2 }
   | WHILE expr DO expr DONE { While ($2, $4) }
   | LET VAR ASSIGN expr IN expr { Let ($2, $4, $6) }
-//   | FUNCTION VAR LPAREN arg_list RPAREN ARROW expr { Func (Some $2, $4, $7) }
-//   | REC FUNCTION VAR LPAREN arg_list RPAREN ARROW expr { RecFunc (Some $3, $5, $8) }
-//   | VAR LPAREN arg_list RPAREN { Call ($1, $3) }
-  ;
-
-// arg_list:
-//   | VAR { [$1] }
-//   | arg_list COMMA VAR { $3 :: $1 }
 

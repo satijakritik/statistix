@@ -1,12 +1,12 @@
 (lang dune 3.10)
 (using menhir 2.1)
 
-(name stat_lang)
+(name statistix)
 
 (generate_opam_files true)
 
 (source
- (github satijakritik/stat_lang))
+ (github satijakritik/statistix))
 
 (authors "Kritik Satija")
 
@@ -17,8 +17,8 @@
 (documentation https://url/to/documentation)
 
 (package
- (name stat_lang)
- (synopsis "A short synopsis")
+ (name statistix)
+ (synopsis "Statistical programming language")
  (description "A longer description")
  (depends ocaml dune fmt ppx_jane)
  (tags

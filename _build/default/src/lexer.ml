@@ -850,17 +850,17 @@ and __ocaml_lex_read_rec lexbuf __ocaml_lex_state =
 # 851 "src/lexer.ml"
 
   | 28 ->
-# 50 "src/lexer.mll"
+# 46 "src/lexer.mll"
         ( SEMICOLON )
 # 856 "src/lexer.ml"
 
   | 29 ->
-# 51 "src/lexer.mll"
+# 47 "src/lexer.mll"
         ( VAR (Lexing.lexeme lexbuf) )
 # 861 "src/lexer.ml"
 
   | 30 ->
-# 52 "src/lexer.mll"
+# 48 "src/lexer.mll"
         ( EOF )
 # 866 "src/lexer.ml"
 

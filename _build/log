@@ -1,9 +1,9 @@
-# dune exec -- stat_lang '1+1;'
+# dune exec -- statistix -f src/test.sx
 # OCAMLPARAM: unset
 # Shared cache: disabled
-# Workspace root: "/Users/kritiksatija/Desktop/OCaml learning/stat_lang"
+# Workspace root: "/Users/kritiksatija/Desktop/OCaml learning/statistix"
 # Auto-detected concurrency: 8
-$ /Users/kritiksatija/.opam/default/bin/ocamlc.opt -config > /var/folders/wk/1y63g54j6qb181j_ytl0b8ww0000gn/T/dune_ad6078_output
+$ /Users/kritiksatija/.opam/default/bin/ocamlc.opt -config > /var/folders/wk/1y63g54j6qb181j_ytl0b8ww0000gn/T/dune_df2090_output
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
@@ -27,17 +27,17 @@ $ /Users/kritiksatija/.opam/default/bin/ocamlc.opt -config > /var/folders/wk/1y6
 #            "/Users/kritiksatija/.opam/default/lib/ocaml:/Users/kritiksatija/.opam/default/lib"
 #        ; "DUNE_OCAML_STDLIB" : "/Users/kritiksatija/.opam/default/lib/ocaml"
 #        ; "DUNE_SOURCEROOT" :
-#            "/Users/kritiksatija/Desktop/OCaml learning/stat_lang"
+#            "/Users/kritiksatija/Desktop/OCaml learning/statistix"
 #        ; "INSIDE_DUNE" :
-#            "/Users/kritiksatija/Desktop/OCaml learning/stat_lang/_build/default"
+#            "/Users/kritiksatija/Desktop/OCaml learning/statistix/_build/default"
 #        ; "MANPATH" :
-#            "/Users/kritiksatija/Desktop/OCaml learning/stat_lang/_build/install/default/man"
+#            "/Users/kritiksatija/Desktop/OCaml learning/statistix/_build/install/default/man"
 #        ; "OCAMLFIND_IGNORE_DUPS_IN" :
-#            "/Users/kritiksatija/Desktop/OCaml learning/stat_lang/_build/install/default/lib"
+#            "/Users/kritiksatija/Desktop/OCaml learning/statistix/_build/install/default/lib"
 #        ; "OCAMLPATH" :
-#            "/Users/kritiksatija/Desktop/OCaml learning/stat_lang/_build/install/default/lib"
+#            "/Users/kritiksatija/Desktop/OCaml learning/statistix/_build/install/default/lib"
 #        ; "OCAMLTOP_INCLUDE_PATH" :
-#            "/Users/kritiksatija/Desktop/OCaml learning/stat_lang/_build/install/default/lib/toplevel"
+#            "/Users/kritiksatija/Desktop/OCaml learning/statistix/_build/install/default/lib/toplevel"
 #        ; "OCAML_COLOR" : "always"
 #        ; "OPAMCOLOR" : "always"
 #        }

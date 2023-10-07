@@ -2,26 +2,11 @@ open Ast
 
 module Env = Map.Make(String)
 
-type 'a env = (string * 'a) list
-(* 
-(* Helper function to add a variable to the environment *)
-let add_var (env : 'a env) (name : string) (value : 'a) : 'a env =
-  (name, value) :: env
-
-(* Helper function to look up a variable in the environment *)
-let rec lookup_var (env : 'a env) (name : string) : 'a option =
-  match env with
-  | [] -> None
-  | (var_name, var_value) :: rest ->
-      if var_name = name then Some var_value
-      else lookup_var rest name *)
-
 type value =
   | VInt of int
   | VBool of bool
   | VFloat of float
   | VUnit
-  (* | Closure of string list * expr * value env *)
 
 
 let string_of_value (v : value) : string =
@@ -64,29 +49,6 @@ let rec eval (env: value Env.t) (e : expr) : value =
       | _ -> failwith "Condition must evaluate to a boolean"
     in
     loop ()
-  (* | Func (name, args, body) -> (
-    match name with
-    | Some x -> Closure (args, body, env)
-    | None -> Closure (args, body, env)
-    )
-  | RecFunc (name, args, body) ->
-      let extended_env = add_var env name (Closure (args, body, env)) in
-      Closure (args, body, extended_env)
-  | Call (func_expr, arg_exprs) ->
-      let func_value = eval env func_expr in
-      (match func_value with
-      | Closure (params, func_body, closure_env) ->
-          if List.length params = List.length arg_exprs then
-            let arg_values = List.map (eval env) arg_exprs in
-            let extended_env =
-              List.fold_left2
-                (fun env param value -> add_var env param value)
-                closure_env params arg_values
-            in
-            eval extended_env func_body
-          else
-            failwith "Number of arguments does not match the function's parameters"
-      | _ -> failwith "Cannot call a non-function") *)
 
 and bool_of_value v =
   match v with

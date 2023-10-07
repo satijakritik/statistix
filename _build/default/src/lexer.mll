@@ -43,10 +43,6 @@ rule read =
   | "while" { WHILE }
   | "do" { DO }
   | "done" { DONE }
-  (* | "fun" { FUNCTION }
-  | "rec" { REC }
-  | "->" { ARROW }
-  | "," { COMMA } *)
   | ";" { SEMICOLON }
   | var { VAR (Lexing.lexeme lexbuf) }
   | eof { EOF }
