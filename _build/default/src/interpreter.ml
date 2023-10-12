@@ -30,6 +30,8 @@ let rec eval (env: value Env.t) (e : expr) : value =
   | Bool b -> VBool b
   | Unaryop (unaryop, e) -> step_unaryop unaryop (eval env e)
   | Binop (binop, e1, e2) -> step_binop binop (eval env e1) (eval env e2)
+  | Sum expr_list -> eval_sum env expr_list
+  | Avg expr_list -> eval_avg env expr_list
   | Let (x, e1, e2) ->
       let value = eval env e1 in
       let new_env = Env.add x value env in
@@ -49,6 +51,35 @@ let rec eval (env: value Env.t) (e : expr) : value =
       | _ -> failwith "Condition must evaluate to a boolean"
     in
     loop ()
+and eval_sum env expr_list =
+  let values = List.map (eval env) expr_list in
+  let rec sum acc value_list =
+    match value_list with
+    | [] -> acc
+    | hd :: tl -> (
+        match hd with
+        | VInt n -> sum (acc + n) tl
+        | _ -> failwith "SUM requires a list of integers"
+      )
+  in
+  match values with
+  | [] -> failwith "SUM function called with an empty list"
+  | _ -> VInt (sum 0 values)
+
+and eval_avg env expr_list =
+  let values = List.map (eval env) expr_list in
+  let rec sum acc value_list =
+    match value_list with
+    | [] -> acc
+    | hd :: tl -> (
+        match hd with
+        | VInt n -> sum (acc + n) tl
+        | _ -> failwith "AVG requires a list of integers"
+      )
+  in
+  match values with
+  | [] -> failwith "AVG function called with an empty list"
+  | _ -> VInt (sum 0 values / List.length values)
 
 and bool_of_value v =
   match v with

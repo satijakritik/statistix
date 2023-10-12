@@ -2,6 +2,7 @@ type token =
     WHILE
   | VAR of string
   | THEN
+  | SUM
   | SEMICOLON
   | RPAREN
   | PRODUCT
@@ -25,11 +26,14 @@ type token =
   | DONE
   | DO
   | DIVIDE
+  | COMMA
   | BOOL of bool
+  | AVG
   | ASSIGN
   | AND
 val menhir_begin_marker : int
 val xv_prog : Ast.expr list
 val xv_expr_list : Ast.expr list
 val xv_expr : Ast.expr
+val xv_arg_list : Ast.expr list
 val menhir_end_marker : int

@@ -5,6 +5,7 @@ type token =
   | WHILE
   | VAR of (string)
   | THEN
+  | SUM
   | SEMICOLON
   | RPAREN
   | PRODUCT
@@ -28,7 +29,9 @@ type token =
   | DONE
   | DO
   | DIVIDE
+  | COMMA
   | BOOL of (bool)
+  | AVG
   | ASSIGN
   | AND
 
