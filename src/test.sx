@@ -6,3 +6,4 @@ let x = 10 in
 
 let y = 30 in
 x * y;
+25 -18;

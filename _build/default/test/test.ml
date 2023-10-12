@@ -83,3 +83,27 @@ let initial_env = Env.empty in
   let result =  interpret initial_env "[false, true, true]" in
   print_endline result;
   [%expect {| bool = false; bool = true; bool = true|}] *)
+
+let%expect_test "Test: sum-1" =
+let initial_env = Env.empty in
+  let result =  interpret initial_env "sum 1, 3, 5;" in
+  print_endline result;
+  [%expect {|9|}]
+
+let%expect_test "Test: sum-2" =
+let initial_env = Env.empty in
+  let result =  interpret initial_env "sum -3, 3, 5;" in
+  print_endline result;
+  [%expect {|5|}]
+
+let%expect_test "Test: avg-1" =
+let initial_env = Env.empty in
+  let result =  interpret initial_env "avg 1, 3, 5;" in
+  print_endline result;
+  [%expect {|3|}]
+
+let%expect_test "Test: avg-2" =
+let initial_env = Env.empty in
+  let result =  interpret initial_env "avg 18, 12, 15;" in
+  print_endline result;
+  [%expect {|15|}]

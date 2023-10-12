@@ -16,9 +16,13 @@
 %token EOF
 
 %token SEMICOLON
+%token COMMA
 
 %token WHILE DO DONE
 
+%token SUM AVG
+
+// %left SUM AVG
 %left LEQUALS GEQUALS EQUALS NEQUALS
 %left MINUS PLUS
 %left PRODUCT MOD DIVIDE
@@ -40,12 +44,19 @@ expr_list:
   | expr SEMICOLON expr_list { $1 :: $3 }
   ;
 
+arg_list:
+  | expr { [$1] }
+  | expr COMMA arg_list { $1 :: $3 }
+  ;
+
 expr:
   | n = INT { Int n }
   | n = BOOL { Bool n }
   | n = VAR { Var n }
   | n = FLOAT { Float n }
   | IF expr THEN expr ELSE expr { If ($2, $4, $6) }
+  | SUM arg_list { Sum($2) }
+  | AVG arg_list { Avg($2) }
   | MINUS expr %prec UMINUS { Unaryop (Neg, $2) }
   | expr PLUS expr { Binop (Add, $1, $3) }
   | expr MINUS expr { Binop (Sub, $1, $3) }

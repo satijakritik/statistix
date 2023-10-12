@@ -15,6 +15,9 @@ let single_line_comment = "//" [^ '\n']* ('\n' | eof)
 
 rule read =
   parse
+  | "sum" { SUM }
+  | "avg" { AVG }
+  | "," { COMMA }
   | single_line_comment { read lexbuf }
   | int { INT (int_of_string (Lexing.lexeme lexbuf)) }
   | float { FLOAT (float_of_string (Lexing.lexeme lexbuf)) }

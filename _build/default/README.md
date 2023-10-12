@@ -31,19 +31,19 @@ To use Statistix, you'll need to install the interpreter on your system. Here's 
    1. Interactive Mode
 
    ```
-   dune exec --statistix
+   dune exec -- statistix
    ```
 
    2. Command mode
   
    ```
-   dune exec --statistix [expression]
+   dune exec -- statistix [expression]
    ```
 
    3. File Interpreter
   
    ```
-   dune exec --statistix [-f] [file_name]
+   dune exec -- statistix [-f] [file_name]
    ```
    
 
